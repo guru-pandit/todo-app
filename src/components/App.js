@@ -1,11 +1,12 @@
-import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import Todo from "./Todo";
 import db from "./firebase";
 import firebase from "firebase";
+import InputForm from "./InputForm";
+import Heading from "./Heading";
 
 function App() {
+  // Declaring states for Todos & Input
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
 
@@ -26,7 +27,6 @@ function App() {
 
   // Adding Todo
   const addTodo = (event) => {
-    // this will fire when click button
     event.preventDefault();
 
     // adding new todo to DB
@@ -38,35 +38,25 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>ToDo App</h1>
-      <form>
-        <FormControl>
-          <InputLabel>Write a Todo</InputLabel>
-          <Input
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-          />
-        </FormControl>
-        <Button
-          type="submit"
-          onClick={addTodo}
-          variant="contained"
-          color="primary"
-          disabled={!input}
-        >
-          Add Todo
-        </Button>
-        {/* <button>Add Todo</button> */}
-      </form>
-
-      <ul>
-        {todos.map((todo) => (
-          <Todo todo={todo} />
-        ))}
-      </ul>
+    <div className="container">
+      <div className="todo-app">
+        <div className="todo-heading">
+          <Heading text="Todo App" />
+        </div>
+        <div>
+          <form>
+            <InputForm input={input} addTodo={addTodo} setInput={setInput} />
+          </form>
+        </div>
+        <div className="todo-list">
+          <ul>
+            {todos.map((todo) => (
+              <Todo key={todo.id} todo={todo} />
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
-
 export default App;

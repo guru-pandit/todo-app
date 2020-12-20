@@ -1,5 +1,6 @@
 import firebase from "firebase";
 
+// Creating Firebase App
 const firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyAG7ws8zG-DIQW7ef6P4AL_OLOnS2jR8ss",
   authDomain: "todo-app-19d7f.firebaseapp.com",
@@ -10,6 +11,7 @@ const firebaseApp = firebase.initializeApp({
   measurementId: "G-XQ18K9S6BY",
 });
 
+// Declaring DB
 const db = firebaseApp.firestore();
 
 export default db;
