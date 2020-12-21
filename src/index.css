@@ -90,6 +90,11 @@ body {
   transition: all 0.3s;
 }
 
+.input-container button:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .input-container button .fas {
   font-size: 1.5rem;
   color: var(--color-dark);

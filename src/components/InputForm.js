@@ -10,7 +10,7 @@ function InputForm({ input, addTodo, setInput }) {
           onChange={(e) => setInput(e.target.value)}
         />
         <span>Write your TODO</span>
-        <button type="submit" onClick={addTodo}>
+        <button disabled={!input} type="submit" onClick={addTodo}>
           <i className="fas fa-plus"></i>
         </button>
       </div>
